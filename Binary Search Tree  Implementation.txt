@@ -1,0 +1,60 @@
+// Binary Search Tree  Implementation
+import java.util.*;
+class BST
+{
+    node root;
+    BST()
+    {
+        root = null;
+    }
+    class node
+    {
+        int data;
+        node left,right;
+        node(int data)
+        {
+            this.data = data;
+            left = right = null;
+        }
+    }
+    public void add(int d) // adding node in tree
+    {
+        root = add_Node(root,d); // calling add_Node method
+    }
+    public node add_Node(node root, int d) // checking where to add
+    {
+        if(root == null)
+        {
+            node t = new node(d);
+            return t;  // 500
+        }
+        else
+        {  // d - 9
+            if(d<root.data)
+            {
+                root.left = add_Node(root.left,d);
+            }
+            else if(d>root.data) // d - 7 , root - 5
+            {
+                root.right = add_Node(root.right,d);
+            }
+            return root;
+        }
+        
+    }
+}
+public class Main 
+{
+    public static void main(String BinarySeachTree[])
+    {
+        BST t = new BST();
+        t.add(5);
+        t.add(7);
+        t.add(3);
+        t.add(9);
+        // 5 7 3 9
+        // inorder traversal   - left root right - 3 5 6 7 9
+        // preorder traversal  - root left right - 5 3 7 6 9
+        // postorder traversal - left right root - 3 6 9 7 5
+    }
+}
